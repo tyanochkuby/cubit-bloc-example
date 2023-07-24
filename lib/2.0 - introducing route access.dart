@@ -35,16 +35,6 @@ class _MyAppState extends State<MyApp> {
             child: const ThirdScreen(
                 title: 'Third Screen', color: Colors.amberAccent)),
       },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: BlocProvider<CounterCubit>(
-          create: (context) => CounterCubit(),
-          child: const HomePage(
-            title: 'Flutter Demo Home Page',
-            color: Colors.yellowAccent,
-          )),
     );
   }
 

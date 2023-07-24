@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
                   tooltip: 'Decrement',
+                  heroTag: "btnDecrement",
                   child: const Icon(Icons.remove),
                 ),
                 FloatingActionButton(
@@ -71,6 +72,7 @@ class _HomePageState extends State<HomePage> {
                     BlocProvider.of<CounterCubit>(context).increment();
                   },
                   tooltip: 'Increment',
+                  heroTag: "btnIncrement",
                   child: const Icon(Icons.add),
                 )
               ],
@@ -80,7 +82,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
           child: Row(
             children: [
               ElevatedButton(
@@ -90,9 +92,12 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/2');
                 },
-                child: const Text('Push to 2nd screen'),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Push to 2nd screen'),
+                ),
               ),
-              const SizedBox(width: 30,),
+              const Spacer(),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: widget.color,
@@ -100,7 +105,10 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.of(context).pushNamed('/3');
                 },
-                child: const Text('Push to 3rd screen'),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Push to 3rd screen'),
+                ),
               ),
             ],
           ),
