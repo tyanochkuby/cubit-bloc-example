@@ -1,44 +1,25 @@
 import 'package:bloc_example/business/cubit/counter_cubit.dart';
+import 'package:bloc_example/presentation/screens/second%20screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: BlocProvider<CounterCubit>(
-            create: (context) => CounterCubit(),
-            child: const MyHomePage(title: 'Flutter Demo Home Page')),
-      );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key, required this.title, required this.color});
 
   final String title;
+  final Color color;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -83,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
                   tooltip: 'Decrement',
+                  heroTag: "btnDecrement",
                   child: const Icon(Icons.remove),
                 ),
                 FloatingActionButton(
@@ -90,11 +72,46 @@ class _MyHomePageState extends State<MyHomePage> {
                     BlocProvider.of<CounterCubit>(context).increment();
                   },
                   tooltip: 'Increment',
+                  heroTag: "btnIncrement",
                   child: const Icon(Icons.add),
                 )
               ],
-            )
+            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+          child: Row(
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: widget.color,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/2');
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Push to 2nd screen'),
+                ),
+              ),
+              const Spacer(),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: widget.color,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/3');
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('Push to 3rd screen'),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

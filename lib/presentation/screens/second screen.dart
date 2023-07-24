@@ -1,46 +1,24 @@
 import 'package:bloc_example/business/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<CounterCubit>(
-      create: (context) => CounterCubit(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class SecondScreen extends StatefulWidget {
+  const SecondScreen({super.key, required this.title, required this.color});
 
   final String title;
+  final Color color;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SecondScreen> createState() => _SecondScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-
+class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: widget.color,
         title: Text(widget.title),
       ),
       body: Center(
@@ -50,7 +28,26 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocBuilder<CounterCubit, CounterState>(
+            BlocConsumer<CounterCubit, CounterState>(
+              listenWhen: (prev, cur) => true,
+              listener: (context, state) {
+                if (state.counterValue > 5) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Stop, the number is bigger than 5 🥵'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                } else if (state.counterValue < 0) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Nooo, the number is less than 0 😭'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Yay!'),
+                    duration: Duration(milliseconds: 300),
+                  ));
+                }
+              },
               builder: (context, state) {
                 return Text(
                   '${state.counterValue}',
@@ -66,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     BlocProvider.of<CounterCubit>(context).decrement();
                   },
                   tooltip: 'Decrement',
+                  heroTag: "btnDecrement",
                   child: const Icon(Icons.remove),
                 ),
                 FloatingActionButton(
@@ -73,13 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     BlocProvider.of<CounterCubit>(context).increment();
                   },
                   tooltip: 'Increment',
+                  heroTag: "btnIncrement",
                   child: const Icon(Icons.add),
                 )
               ],
-            )
+            ),
           ],
         ),
       ),
+
     );
   }
 }

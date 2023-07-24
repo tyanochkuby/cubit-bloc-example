@@ -1,5 +1,4 @@
-import 'package:bloc_example/cubit/counter_cubit.dart';
-import 'package:test_core/test_core.dart';
+import 'package:bloc_example/business/cubit/counter_cubit.dart';
 import 'package:test/test.dart';
 import 'package:bloc_test/bloc_test.dart';
 
