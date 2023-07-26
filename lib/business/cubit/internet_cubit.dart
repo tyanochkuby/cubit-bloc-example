@@ -8,10 +8,10 @@ import 'package:meta/meta.dart';
 part 'internet_state.dart';
 
 class InternetCubit extends Cubit<InternetState> {
-  final Connectivity connectivity = Connectivity();
+  final Connectivity connectivity;
   late StreamSubscription connectivityStreamSubscription;
 
-  InternetCubit() : super(InternetLoading()) {
+  InternetCubit({required this.connectivity}) : super(InternetLoading()) {
     monitorInternetConnection();
   }
 

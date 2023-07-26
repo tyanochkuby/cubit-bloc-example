@@ -1,4 +1,4 @@
-import 'package:bloc_example/business/cubit/counter_cubit.dart';
+import 'package:bloc_example/business/cubit/counter_1_0_2_1_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CounterCubit>(
-      create: (context) => CounterCubit(),
+    return BlocProvider<Counter1021Cubit>(
+      create: (context) => Counter1021Cubit(),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            BlocBuilder<CounterCubit, CounterState>(
+            BlocBuilder<Counter1021Cubit, Counter1021State>(
               builder: (context, state) {
                 return Text(
                   '${state.counterValue}',
@@ -63,14 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 FloatingActionButton(
                   onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).decrement();
+                    BlocProvider.of<Counter1021Cubit>(context).decrement();
                   },
                   tooltip: 'Decrement',
                   child: const Icon(Icons.remove),
                 ),
                 FloatingActionButton(
                   onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).increment();
+                    BlocProvider.of<Counter1021Cubit>(context).increment();
                   },
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
