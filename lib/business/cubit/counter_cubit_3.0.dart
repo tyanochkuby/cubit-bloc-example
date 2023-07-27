@@ -8,7 +8,7 @@ import 'package:equatable/equatable.dart';
 
 import 'package:meta/meta.dart';
 
-part 'counter_state.dart';
+part 'counter_state_3.0.dart';
 
 class CounterCubit extends Cubit<CounterState> {
   final InternetCubit internetCubit;

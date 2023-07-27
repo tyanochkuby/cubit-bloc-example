@@ -1,4 +1,4 @@
-part of 'counter_1_0_2_1_cubit.dart';
+part of 'counter_1.0-2.1_cubit.dart';
 
 class Counter1021State extends Equatable {
   int counterValue;

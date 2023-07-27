@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-part 'counter_1_0_2_1_state.dart';
+part 'counter_1.0-2.1_state.dart';
 
 class Counter1021Cubit extends Cubit<Counter1021State> {
   Counter1021Cubit() : super(Counter1021State(counterValue: 0));
