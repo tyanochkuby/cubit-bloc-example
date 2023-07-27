@@ -1,4 +1,4 @@
-import 'package:bloc_example/business/cubit/counter_cubit.dart';
+import 'package:bloc_example/business/cubit/counter_cubit_3.0.dart';
 import 'package:bloc_example/business/cubit/internet_cubit.dart';
 import 'package:bloc_example/constanst/enums.dart';
 import 'package:bloc_example/presentation/screens/second%20screen.dart';
