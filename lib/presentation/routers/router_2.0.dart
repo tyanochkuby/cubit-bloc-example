@@ -13,33 +13,30 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider.value(
+            builder: (_) => BlocProvider.value(
                   value: counterCubit,
                   child: const HomePage(title: 'Home Page', color: Colors.teal),
                 ));
-        break;
       case '/2':
-        return MaterialPageRoute(builder: (_) =>
-            BlocProvider.value(
-              value: counterCubit,
-              child: const SecondScreen(title: "Second Page", color: Colors.lightGreen),
-            ));
-        break;
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider.value(
+                  value: counterCubit,
+                  child: const SecondScreen(
+                      title: "Second Page", color: Colors.lightGreen),
+                ));
       case '/3':
         return MaterialPageRoute(
-            builder: (_) =>
-                BlocProvider.value(
+            builder: (_) => BlocProvider.value(
                   value: counterCubit,
-                  child: const ThirdScreen(title: 'Third Page', color: Colors.amberAccent),
+                  child: const ThirdScreen(
+                      title: 'Third Page', color: Colors.amberAccent),
                 ));
-        break;
       default:
         return null;
     }
   }
 
-  void dispose(){
+  void dispose() {
     counterCubit.close();
   }
 }
