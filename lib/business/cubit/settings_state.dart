@@ -12,4 +12,11 @@ class SettingsState {
         appNotifications: appNotifications ?? this.appNotifications,
         emailNotifications: emailNotifications ?? this.emailNotifications);
   }
+
+  @override
+  bool operator ==(Object otherState) {
+    return otherState is SettingsState &&
+        this.appNotifications == otherState.appNotifications &&
+        this.emailNotifications == otherState.emailNotifications;
+  }
 }
