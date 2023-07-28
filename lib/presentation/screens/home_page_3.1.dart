@@ -23,10 +23,10 @@ class _HomePageState extends State<HomePage> {
       listener: (context, internetState) {
         if (internetState is InternetConnected &&
             internetState.connectionType == ConnectionType.wifi) {
-          context.read<CounterCubit>().increment();
+          BlocProvider.of<CounterCubit>(context).increment();
         } else if (internetState is InternetConnected &&
             internetState.connectionType == ConnectionType.mobile) {
-          context.read<CounterCubit>().decrement();
+          BlocProvider.of<CounterCubit>(context).decrement();
         }
       },
       child: Scaffold(
