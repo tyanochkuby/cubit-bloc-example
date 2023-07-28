@@ -3,14 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
-
   Route? onGeneratedRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
             builder: (_) =>
-            const HomePage(title: 'Home Page', color: Colors.teal));
-        break;
+                const HomePage(title: 'Home Page', color: Colors.teal));
       default:
         return null;
     }

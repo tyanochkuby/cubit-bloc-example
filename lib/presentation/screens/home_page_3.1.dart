@@ -1,7 +1,6 @@
 import 'package:bloc_example/business/cubit/counter_cubit_3.0.dart';
 import 'package:bloc_example/business/cubit/internet_cubit.dart';
 import 'package:bloc_example/constanst/enums.dart';
-import 'package:bloc_example/presentation/screens/second%20screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

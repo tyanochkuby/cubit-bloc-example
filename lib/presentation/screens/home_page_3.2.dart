@@ -31,14 +31,20 @@ class _HomePageState extends State<HomePage> {
               builder: (context) {
                 final counterState = context.watch<CounterCubit>().state;
                 final internetState = context.watch<InternetCubit>().state;
-                if (internetState is InternetConnected && internetState.connectionType == ConnectionType.mobile)
-                  return Text('counter: ${counterState.counterValue}, internet: mobile');
-                else if (internetState is InternetConnected && internetState.connectionType == ConnectionType.wifi)
-                  return Text('counter: ${counterState.counterValue}, internet: wifi');
+                if (internetState is InternetConnected &&
+                    internetState.connectionType == ConnectionType.mobile)
+                  return Text(
+                      'counter: ${counterState.counterValue}, internet: mobile');
+                else if (internetState is InternetConnected &&
+                    internetState.connectionType == ConnectionType.wifi)
+                  return Text(
+                      'counter: ${counterState.counterValue}, internet: wifi');
                 else if (internetState is InternetDisconnected)
-                  return Text('counter: ${counterState.counterValue}, internet: disconnected');
+                  return Text(
+                      'counter: ${counterState.counterValue}, internet: disconnected');
                 else
-                  return Text('counter: ${counterState.counterValue}, internet: unknown');
+                  return Text(
+                      'counter: ${counterState.counterValue}, internet: unknown');
               },
             ),
             BlocListener<CounterCubit, CounterState>(

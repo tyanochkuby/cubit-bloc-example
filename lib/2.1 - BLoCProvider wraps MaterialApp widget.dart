@@ -1,8 +1,5 @@
 import 'package:bloc_example/business/cubit/counter_1.0-2.1_cubit.dart';
 import 'package:bloc_example/presentation/routers/router_2.1.dart';
-import 'package:bloc_example/presentation/screens/home_page.dart';
-import 'package:bloc_example/presentation/screens/second%20screen.dart';
-import 'package:bloc_example/presentation/screens/third_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +19,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-
-
 }
