@@ -1,7 +1,6 @@
 import 'package:bloc_example/presentation/screens/home_page.dart';
 import 'package:bloc_example/presentation/screens/second%20screen.dart';
 import 'package:bloc_example/presentation/screens/third_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
