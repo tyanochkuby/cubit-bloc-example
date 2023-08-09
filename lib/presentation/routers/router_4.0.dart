@@ -5,7 +5,7 @@ class AppRouter4 {
   Route? onGeneratedRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const HomePage4());
+        return MaterialPageRoute(builder: (_) => HomePage4());
       default:
         return null;
     }
