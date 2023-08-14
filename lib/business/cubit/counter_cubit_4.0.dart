@@ -20,4 +20,10 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
   Map<String, dynamic> toJson(CounterState state) {
     return state.toMap();
   }
+
+  @override
+  void onChange(Change<CounterState> change) {
+    print(change);
+    super.onChange(change);
+  }
 }
